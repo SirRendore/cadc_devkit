@@ -22,7 +22,8 @@ def convert_novatel_to_pose(novatel):
     # Azimuth = north at 0 degrees, east at 90 degrees, south at 180 degrees and west at 270 degrees
     azimuth = float(gps_msg[9]);
     # yaw = north at 0 deg, 90 at west and 180 at south, east at 270 deg
-    yaw = np.deg2rad(-1.0 * azimuth); 
+    # yaw = np.deg2rad(- azimuth)
+    yaw = np.deg2rad(90 - azimuth)
 
     c_phi = math.cos(roll);
     s_phi = math.sin(roll);

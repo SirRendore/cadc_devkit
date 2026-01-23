@@ -24,7 +24,7 @@ cadcd = {
     ]
 }
 
-dataset_path=''
+dataset_path=r''
 
 if len(sys.argv) == 2:
     dataset_path = sys.argv[1]
@@ -33,18 +33,18 @@ else:
     print('Please enter the path to store the dataset.')
     exit()
 
-labeled = True
+labeled = False
 if labeled:
     print('Downloading labeled data')
 else:
     print('Downloading raw data')
 
 def main():
-    root_dir = Path(dataset_path + '/cadcd')
+    root_dir = Path(dataset_path + '/cadcd_raw')
     root_dir.mkdir(parents=True, exist_ok=True)
     for date in cadcd:
         print(date)
-        date_path = dataset_path + '/cadcd/' + date
+        date_path = dataset_path + '/cadcd_raw/' + date
         date_dir = Path(date_path)
         date_dir.mkdir(parents=True, exist_ok=True)
 
@@ -61,7 +61,7 @@ def main():
 
         for drive in cadcd[date]:
             print(drive)
-            drive_path = dataset_path + '/cadcd/' + date + '/' + drive
+            drive_path = dataset_path + '/cadcd_raw/' + date + '/' + drive
             drive_dir = Path(drive_path)
             drive_dir.mkdir(parents=True, exist_ok=True)
 
